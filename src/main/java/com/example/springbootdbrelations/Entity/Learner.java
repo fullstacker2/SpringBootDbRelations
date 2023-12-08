@@ -14,6 +14,9 @@ public class Learner {
     private String email;
     private String password;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "course_id_ref", referencedColumnName = "course_id")
+    private Course course;
     public Learner() {
     }
 
@@ -85,9 +88,5 @@ public class Learner {
                 ", course=" + course +
                 '}';
     }
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "course_id_ref", referencedColumnName = "course_id")
-    private Course course;
 
 }

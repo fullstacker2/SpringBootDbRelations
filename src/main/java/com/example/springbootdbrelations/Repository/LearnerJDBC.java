@@ -16,4 +16,9 @@ public class LearnerJDBC {
         String getAllLearnerQuery = "SELECT * FROM Learner";
         return jdbcTemplate.query(getAllLearnerQuery, new BeanPropertyRowMapper<Learner>(Learner.class));
     }
+
+    public int updateLearner(Learner learner) {
+        String updateLearnerQuery = "Update Learner SET first_name = ?, last_name = ?, email = ?, password = ?, course = ? "+" WHERE id = ?";
+        return jdbcTemplate.update(updateLearnerQuery, new Object[]{learner.getFirst_name(), learner.getLast_name(), learner.getEmail(), learner.getPassword(), learner.getCourse()});
+    }
 }
